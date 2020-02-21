@@ -5,37 +5,12 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next gemini use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
-<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
-<style>
-    .pace .pace-progress {
-        background: #1E92FB; /*进度条颜色*/
-        height: 3px;
-    }
-    .pace .pace-progress-inner {
-         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
-    }
-    .pace .pace-activity {
-        border-top-color: #1E92FB;    /*上边框颜色*/
-        border-left-color: #1E92FB;    /*左边框颜色*/
-    }
-</style>
 <meta name="theme-color" content="#222">
-<script>
-    (function(){
-        if(''){
-            if (prompt('请输入文章密码') !== ''){
-                alert('密码错误！');
-                history.back();
-            }
-        }
-    })();
-</script>
 
 
 
@@ -93,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="设计模式," />
 
 
 
@@ -104,16 +79,17 @@
 
 
 
-<meta name="description" content="title: 设计模式（一）date: 2020-02-17 18:38:51comments: truetags: 设计模式copyright: truepassword:top: 1search:  path: search.xml  field: post  format: html  limit: 10000  简单工厂模式为什么要有工厂模式？ 因为在有很多对象需要集中集中操作的时候，可">
+<meta name="description" content="简单工厂模式为什么要有工厂模式？ 因为在有很多对象需要集中集中操作的时候，可以减少代码的复用和提高代码的灵活性，具体参考下例。  什么是工厂模式？1、什么是工厂？一个专门来创建实例的类叫做工厂，下面是一个简单的例子。123456789101112131415public classs Factory&amp;#123;  &#x2F;&#x2F;创建工厂类    public static Object">
 <meta property="og:type" content="article">
-<meta property="og:title" content="设计模式">
+<meta property="og:title" content="设计模式（一）">
 <meta property="og:url" content="http://dougxian.github.io/2020/02/17/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/index.html">
 <meta property="og:site_name" content="Doug-Blog">
-<meta property="og:description" content="title: 设计模式（一）date: 2020-02-17 18:38:51comments: truetags: 设计模式copyright: truepassword:top: 1search:  path: search.xml  field: post  format: html  limit: 10000  简单工厂模式为什么要有工厂模式？ 因为在有很多对象需要集中集中操作的时候，可">
+<meta property="og:description" content="简单工厂模式为什么要有工厂模式？ 因为在有很多对象需要集中集中操作的时候，可以减少代码的复用和提高代码的灵活性，具体参考下例。  什么是工厂模式？1、什么是工厂？一个专门来创建实例的类叫做工厂，下面是一个简单的例子。123456789101112131415public classs Factory&amp;#123;  &#x2F;&#x2F;创建工厂类    public static Object">
 <meta property="og:image" content="http://dougxian.github.io/2020/02/17/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/..%5CPrintScreen%5CStrateModel.png">
-<meta property="article:published_time" content="2020-02-17T10:38:51.142Z">
-<meta property="article:modified_time" content="2020-02-20T16:11:21.804Z">
+<meta property="article:published_time" content="2020-02-17T10:38:51.000Z">
+<meta property="article:modified_time" content="2020-02-20T16:21:14.152Z">
 <meta property="article:author" content="刘军衔">
+<meta property="article:tag" content="设计模式">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://dougxian.github.io/2020/02/17/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/..%5CPrintScreen%5CStrateModel.png">
 
@@ -123,7 +99,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Gemini',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -134,9 +110,9 @@
       author: '博主'
     },
     algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
+      applicationID: 'OK6FCPB57R',
+      apiKey: 'a7520ceb3a7f636b0bfa3bc442792aea',
+      indexName: 'search',
       hits: {"per_page":10},
       labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     }
@@ -151,12 +127,22 @@
 
 
 
-  <title>设计模式 | Doug-Blog</title>
+  <title>设计模式（一） | Doug-Blog</title>
   
 
 
 
 
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?8c315ca195972df82655e90b0b9b56e1";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
 
 
 
@@ -207,19 +193,29 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/%20" rel="section">
+          <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
             
             首页
           </a>
         </li>
       
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/%20" rel="section">
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
             
             归档
           </a>
@@ -227,9 +223,47 @@
       
 
       
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
     </ul>
   
 
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
   
 </nav>
 
@@ -275,7 +309,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">设计模式</h1>
+          <h1 class="post-title" itemprop="name headline">设计模式（一）</h1>
         
 
         <div class="post-meta">
@@ -325,10 +359,7 @@
       
 
       
-        <hr>
-<p>title: 设计模式（一）<br>date: 2020-02-17 18:38:51<br>comments: true<br>tags: 设计模式<br>copyright: true<br>password:<br>top: 1<br>search:<br>  path: search.xml<br>  field: post<br>  format: html<br>  limit: 10000</p>
-<hr>
-<h1 id="简单工厂模式"><a href="#简单工厂模式" class="headerlink" title="简单工厂模式"></a>简单工厂模式</h1><h2 id="为什么要有工厂模式？"><a href="#为什么要有工厂模式？" class="headerlink" title="为什么要有工厂模式？"></a>为什么要有工厂模式？</h2><blockquote>
+        <h1 id="简单工厂模式"><a href="#简单工厂模式" class="headerlink" title="简单工厂模式"></a>简单工厂模式</h1><h2 id="为什么要有工厂模式？"><a href="#为什么要有工厂模式？" class="headerlink" title="为什么要有工厂模式？"></a>为什么要有工厂模式？</h2><blockquote>
 <p>因为在有很多对象需要集中集中操作的时候，可以减少代码的复用和提高代码的灵活性，具体参考下例。</p>
 </blockquote>
 <h2 id="什么是工厂模式？"><a href="#什么是工厂模式？" class="headerlink" title="什么是工厂模式？"></a>什么是工厂模式？</h2><h3 id="1、什么是工厂？"><a href="#1、什么是工厂？" class="headerlink" title="1、什么是工厂？"></a>1、什么是工厂？</h3><pre><code>一个专门来创建实例的类叫做工厂，下面是一个简单的例子。</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public classs Factory&#123;  &#x2F;&#x2F;创建工厂类</span><br><span class="line">    public static Object CreateBean(Object arg)&#123;</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F;根据参数创造不同的子类，实现多态。</span><br><span class="line">        Object ob &#x3D; null;</span><br><span class="line">        switch(arg)&#123;</span><br><span class="line">            case: arg1&#123;ob &#x3D; new Object1();&#125;</span><br><span class="line"></span><br><span class="line">            case: .....</span><br><span class="line"></span><br><span class="line">           break;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -390,11 +421,6 @@ B、抽象不应该依赖于细节，细节应该依赖于抽象。</code></pre>
     
     
 
-      <div>
-            
-              
-            
-      </div>
     
 
     
@@ -402,6 +428,12 @@ B、抽象不应该依赖于细节，细节应该依赖于抽象。</code></pre>
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag"># 设计模式</a>
+          
+        </div>
       
 
       
@@ -495,9 +527,9 @@ B、抽象不应该依赖于细节，细节应该依赖于抽象。</code></pre>
             
               <div class="site-state-item site-state-posts">
               
-                <a href="/archives/%20%7C%7C%20archive">
+                <a href="/archives">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -510,7 +542,7 @@ B、抽象不应该依赖于细节，细节应该依赖于抽象。</code></pre>
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -563,9 +595,7 @@ B、抽象不应该依赖于细节，细节应该依赖于抽象。</code></pre>
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <!--
-
-<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -583,11 +613,11 @@ B、抽象不应该依赖于细节，细节应该依赖于抽象。</code></pre>
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
 
 
 
--->
+
         
 
 
@@ -683,6 +713,13 @@ B、抽象不应该依赖于细节，细节应该依赖于抽象。</code></pre>
   
   
 
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
@@ -732,6 +769,19 @@ B、抽象不应该依赖于细节，细节应该依赖于抽象。</code></pre>
   
 
 
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.4"></script>
 
 
 

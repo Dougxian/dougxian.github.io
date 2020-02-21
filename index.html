@@ -5,37 +5,12 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next gemini use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
-<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
-<style>
-    .pace .pace-progress {
-        background: #1E92FB; /*进度条颜色*/
-        height: 3px;
-    }
-    .pace .pace-progress-inner {
-         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
-    }
-    .pace .pace-activity {
-        border-top-color: #1E92FB;    /*上边框颜色*/
-        border-left-color: #1E92FB;    /*左边框颜色*/
-    }
-</style>
 <meta name="theme-color" content="#222">
-<script>
-    (function(){
-        if(''){
-            if (prompt('请输入文章密码') !== ''){
-                alert('密码错误！');
-                history.back();
-            }
-        }
-    })();
-</script>
 
 
 
@@ -119,7 +94,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Gemini',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -130,9 +105,9 @@
       author: '博主'
     },
     algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
+      applicationID: 'OK6FCPB57R',
+      apiKey: 'a7520ceb3a7f636b0bfa3bc442792aea',
+      indexName: 'search',
       hits: {"per_page":10},
       labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     }
@@ -153,6 +128,16 @@
 
 
 
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?8c315ca195972df82655e90b0b9b56e1";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
 
 
 
@@ -204,19 +189,29 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/%20" rel="section">
+          <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
             
             首页
           </a>
         </li>
       
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/%20" rel="section">
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
             
             归档
           </a>
@@ -224,9 +219,47 @@
       
 
       
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
     </ul>
   
 
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
   
 </nav>
 
@@ -241,6 +274,299 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://dougxian.github.io/2020/02/17/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="刘军衔">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Doug-Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/02/17/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" itemprop="url">设计模式（一）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-17T18:38:51+08:00">
+                2020-02-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="简单工厂模式"><a href="#简单工厂模式" class="headerlink" title="简单工厂模式"></a>简单工厂模式</h1><h2 id="为什么要有工厂模式？"><a href="#为什么要有工厂模式？" class="headerlink" title="为什么要有工厂模式？"></a>为什么要有工厂模式？</h2><blockquote>
+<p>因为在有很多对象需要集中集中操作的时候，可以减少代码的复用和提高代码的灵活性，具体参考下例。</p>
+</blockquote>
+<h2 id="什么是工厂模式？"><a href="#什么是工厂模式？" class="headerlink" title="什么是工厂模式？"></a>什么是工厂模式？</h2><h3 id="1、什么是工厂？"><a href="#1、什么是工厂？" class="headerlink" title="1、什么是工厂？"></a>1、什么是工厂？</h3><pre><code>一个专门来创建实例的类叫做工厂，下面是一个简单的例子。</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public classs Factory&#123;  &#x2F;&#x2F;创建工厂类</span><br><span class="line">    public static Object CreateBean(Object arg)&#123;</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F;根据参数创造不同的子类，实现多态。</span><br><span class="line">        Object ob &#x3D; null;</span><br><span class="line">        switch(arg)&#123;</span><br><span class="line">            case: arg1&#123;ob &#x3D; new Object1();&#125;</span><br><span class="line"></span><br><span class="line">            case: .....</span><br><span class="line"></span><br><span class="line">           break;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="工厂模式的好处有哪些？"><a href="#工厂模式的好处有哪些？" class="headerlink" title="工厂模式的好处有哪些？"></a>工厂模式的好处有哪些？</h2><pre><code>提高代码服用性和灵活性，工厂模式解决了对象创建问题。</code></pre><p>Tips:</p>
+<blockquote>
+<p><font color="blue">聚合表示一种弱的“拥有”关系，体现的是A对象可以包含B对象，但是B对象不是A对象的一部分。。</font></p>
+</blockquote>
+<blockquote>
+<p><font color="blue">封装的好处在于将逻辑处理分离开来，到达高复用、高扩展、高灵活性的的目的。</font></p>
+</blockquote>
+<hr>
+<h1 id="策略模式"><a href="#策略模式" class="headerlink" title="策略模式"></a>策略模式</h1><blockquote>
+<p>以解决商场收银员业务为背景。</p>
+</blockquote>
+<h2 id="什么是策略模式？"><a href="#什么是策略模式？" class="headerlink" title="什么是策略模式？"></a>什么是策略模式？</h2><blockquote>
+<p>策略模式：它定义了算法家族，分别封装起来，让它们之间可以相互替换，此模式可以让算法的变化不会影响带到适应算法的客户。</p>
+</blockquote>
+<p><img src="..%5CPrintScreen%5CStrateModel.png" alt="策略模式结构图"></p>
+<h2 id="策略模式的使用。"><a href="#策略模式的使用。" class="headerlink" title="策略模式的使用。"></a>策略模式的使用。</h2><pre><code>在什么时候使用策略模式呢？</code></pre><blockquote>
+<p>策略模式是用来封装算法的，在实践中我们发现可以用它来封装几乎任何类型的规则。只要在不同的时间使用不同的规则，就可以使用策略模式来封装这种变化的可能性。在基本的策略模式中，选择具体的算法实现是由客户端来选择并转给上下文对象来处理的，但是这并没有减少客户端需要判断的压力。简单工厂模式与策略模式的结合可以将选择的任务交给上下文对象。</p>
+</blockquote>
+<p>Tips:</p>
+<blockquote>
+<p><font color="blue">面向对象编程并不是类越多越好，分类的目的是分装，分类的基础是抽象，分类的依据是具有相同的属性和操作。</font></p>
+</blockquote>
+<blockquote>
+<p><font color="blue">封装变化点是面向对象一种重要的思想。</font></p>
+</blockquote>
+<hr>
+<h1 id="单一职责模式"><a href="#单一职责模式" class="headerlink" title="单一职责模式"></a>单一职责模式</h1><h2 id="什么是职责单一模式？"><a href="#什么是职责单一模式？" class="headerlink" title="什么是职责单一模式？"></a>什么是职责单一模式？</h2><blockquote>
+<p>就一个类而言，应该只有一个引起它变化的原因。</p>
+</blockquote>
+<h2 id="什么情景下使用职责单一模式？"><a href="#什么情景下使用职责单一模式？" class="headerlink" title="什么情景下使用职责单一模式？"></a>什么情景下使用职责单一模式？</h2><blockquote>
+<p>如果一个类承担的职责过多，就相当于这些职责耦合在一起。一个职责的变化可能会削弱或者抑制这个类完成其他职责的能力。这种耦合会导致脆弱的设计，当变化发生时，设计会遭受到意想不到的破坏。软件设计真正要做的内容是发现职责并且把这些职责进行分离。如果能够想到多于一个的动机去改变这个类，那么这个类就具有多于一个的职责。</p>
+</blockquote>
+<p>Tips：</p>
+<p><font color="red"></font></p>
+<hr>
+<h1 id="开放封闭原则"><a href="#开放封闭原则" class="headerlink" title="开放封闭原则"></a>开放封闭原则</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><blockquote>
+<p>对于更改是封闭的，对于扩展是开放的。</p>
+</blockquote>
+<h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2><blockquote>
+<p>当需求发生改变时，需要的考虑的是通过增添代码来实现需求，而不是通过修改。例如在加法系统的基础上要实现减法，可以先将计算进行抽象，然后通过多态实现加法和减法。在此后的变更中就可以通过抽象类来扩展乘法和其他运算了。</p>
+</blockquote>
+<blockquote>
+<p>在软件设计中这种不可以修改，但是可以扩展的思想是一种重要的思想。</p>
+</blockquote>
+<hr>
+<h1 id="依赖倒转原则"><a href="#依赖倒转原则" class="headerlink" title="依赖倒转原则"></a>依赖倒转原则</h1><h2 id="定义："><a href="#定义：" class="headerlink" title="定义："></a>定义：</h2><pre><code>抽象不应该依赖于细节，细节应该依赖于抽象。</code></pre><blockquote>
+<p>简而言之就是针对接口编程，而不是对实现编程。</p>
+</blockquote>
+<h2 id="原则："><a href="#原则：" class="headerlink" title="原则："></a>原则：</h2><pre><code>A、高层模块不应该依赖于底层模块。两个都应该依赖抽象。
+
+B、抽象不应该依赖于细节，细节应该依赖于抽象。</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://dougxian.github.io/2020/02/21/ElasticSearch%E4%B9%8B%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="刘军衔">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Doug-Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/02/21/ElasticSearch%E4%B9%8B%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86/" itemprop="url">ElasticSearch之集群管理</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-21T00:23:03+08:00">
+                2020-02-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -359,189 +685,6 @@
     
     
 
-      <div>
-            
-      </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://dougxian.github.io/2020/02/17/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="刘军衔">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Doug-Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/02/17/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" itemprop="url">设计模式</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-17T18:38:51+08:00">
-                2020-02-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<p>title: 设计模式（一）<br>date: 2020-02-17 18:38:51<br>comments: true<br>tags: 设计模式<br>copyright: true<br>password:<br>top: 1<br>search:<br>  path: search.xml<br>  field: post<br>  format: html<br>  limit: 10000</p>
-<hr>
-<h1 id="简单工厂模式"><a href="#简单工厂模式" class="headerlink" title="简单工厂模式"></a>简单工厂模式</h1><h2 id="为什么要有工厂模式？"><a href="#为什么要有工厂模式？" class="headerlink" title="为什么要有工厂模式？"></a>为什么要有工厂模式？</h2><blockquote>
-<p>因为在有很多对象需要集中集中操作的时候，可以减少代码的复用和提高代码的灵活性，具体参考下例。</p>
-</blockquote>
-<h2 id="什么是工厂模式？"><a href="#什么是工厂模式？" class="headerlink" title="什么是工厂模式？"></a>什么是工厂模式？</h2><h3 id="1、什么是工厂？"><a href="#1、什么是工厂？" class="headerlink" title="1、什么是工厂？"></a>1、什么是工厂？</h3><pre><code>一个专门来创建实例的类叫做工厂，下面是一个简单的例子。</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public classs Factory&#123;  &#x2F;&#x2F;创建工厂类</span><br><span class="line">    public static Object CreateBean(Object arg)&#123;</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F;根据参数创造不同的子类，实现多态。</span><br><span class="line">        Object ob &#x3D; null;</span><br><span class="line">        switch(arg)&#123;</span><br><span class="line">            case: arg1&#123;ob &#x3D; new Object1();&#125;</span><br><span class="line"></span><br><span class="line">            case: .....</span><br><span class="line"></span><br><span class="line">           break;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="工厂模式的好处有哪些？"><a href="#工厂模式的好处有哪些？" class="headerlink" title="工厂模式的好处有哪些？"></a>工厂模式的好处有哪些？</h2><pre><code>提高代码服用性和灵活性，工厂模式解决了对象创建问题。</code></pre><p>Tips:</p>
-<blockquote>
-<p><font color="blue">聚合表示一种弱的“拥有”关系，体现的是A对象可以包含B对象，但是B对象不是A对象的一部分。。</font></p>
-</blockquote>
-<blockquote>
-<p><font color="blue">封装的好处在于将逻辑处理分离开来，到达高复用、高扩展、高灵活性的的目的。</font></p>
-</blockquote>
-<hr>
-<h1 id="策略模式"><a href="#策略模式" class="headerlink" title="策略模式"></a>策略模式</h1><blockquote>
-<p>以解决商场收银员业务为背景。</p>
-</blockquote>
-<h2 id="什么是策略模式？"><a href="#什么是策略模式？" class="headerlink" title="什么是策略模式？"></a>什么是策略模式？</h2><blockquote>
-<p>策略模式：它定义了算法家族，分别封装起来，让它们之间可以相互替换，此模式可以让算法的变化不会影响带到适应算法的客户。</p>
-</blockquote>
-<p><img src="..%5CPrintScreen%5CStrateModel.png" alt="策略模式结构图"></p>
-<h2 id="策略模式的使用。"><a href="#策略模式的使用。" class="headerlink" title="策略模式的使用。"></a>策略模式的使用。</h2><pre><code>在什么时候使用策略模式呢？</code></pre><blockquote>
-<p>策略模式是用来封装算法的，在实践中我们发现可以用它来封装几乎任何类型的规则。只要在不同的时间使用不同的规则，就可以使用策略模式来封装这种变化的可能性。在基本的策略模式中，选择具体的算法实现是由客户端来选择并转给上下文对象来处理的，但是这并没有减少客户端需要判断的压力。简单工厂模式与策略模式的结合可以将选择的任务交给上下文对象。</p>
-</blockquote>
-<p>Tips:</p>
-<blockquote>
-<p><font color="blue">面向对象编程并不是类越多越好，分类的目的是分装，分类的基础是抽象，分类的依据是具有相同的属性和操作。</font></p>
-</blockquote>
-<blockquote>
-<p><font color="blue">封装变化点是面向对象一种重要的思想。</font></p>
-</blockquote>
-<hr>
-<h1 id="单一职责模式"><a href="#单一职责模式" class="headerlink" title="单一职责模式"></a>单一职责模式</h1><h2 id="什么是职责单一模式？"><a href="#什么是职责单一模式？" class="headerlink" title="什么是职责单一模式？"></a>什么是职责单一模式？</h2><blockquote>
-<p>就一个类而言，应该只有一个引起它变化的原因。</p>
-</blockquote>
-<h2 id="什么情景下使用职责单一模式？"><a href="#什么情景下使用职责单一模式？" class="headerlink" title="什么情景下使用职责单一模式？"></a>什么情景下使用职责单一模式？</h2><blockquote>
-<p>如果一个类承担的职责过多，就相当于这些职责耦合在一起。一个职责的变化可能会削弱或者抑制这个类完成其他职责的能力。这种耦合会导致脆弱的设计，当变化发生时，设计会遭受到意想不到的破坏。软件设计真正要做的内容是发现职责并且把这些职责进行分离。如果能够想到多于一个的动机去改变这个类，那么这个类就具有多于一个的职责。</p>
-</blockquote>
-<p>Tips：</p>
-<p><font color="red"></font></p>
-<hr>
-<h1 id="开放封闭原则"><a href="#开放封闭原则" class="headerlink" title="开放封闭原则"></a>开放封闭原则</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><blockquote>
-<p>对于更改是封闭的，对于扩展是开放的。</p>
-</blockquote>
-<h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2><blockquote>
-<p>当需求发生改变时，需要的考虑的是通过增添代码来实现需求，而不是通过修改。例如在加法系统的基础上要实现减法，可以先将计算进行抽象，然后通过多态实现加法和减法。在此后的变更中就可以通过抽象类来扩展乘法和其他运算了。</p>
-</blockquote>
-<blockquote>
-<p>在软件设计中这种不可以修改，但是可以扩展的思想是一种重要的思想。</p>
-</blockquote>
-<hr>
-<h1 id="依赖倒转原则"><a href="#依赖倒转原则" class="headerlink" title="依赖倒转原则"></a>依赖倒转原则</h1><h2 id="定义："><a href="#定义：" class="headerlink" title="定义："></a>定义：</h2><pre><code>抽象不应该依赖于细节，细节应该依赖于抽象。</code></pre><blockquote>
-<p>简而言之就是针对接口编程，而不是对实现编程。</p>
-</blockquote>
-<h2 id="原则："><a href="#原则：" class="headerlink" title="原则："></a>原则：</h2><pre><code>A、高层模块不应该依赖于底层模块。两个都应该依赖抽象。
-
-B、抽象不应该依赖于细节，细节应该依赖于抽象。</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-
-      <div>
-            
-      </div>
     
 
     
@@ -612,9 +755,9 @@ B、抽象不应该依赖于细节，细节应该依赖于抽象。</code></pre>
             
               <div class="site-state-item site-state-posts">
               
-                <a href="/archives/%20%7C%7C%20archive">
+                <a href="/archives">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -627,7 +770,7 @@ B、抽象不应该依赖于细节，细节应该依赖于抽象。</code></pre>
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -664,9 +807,7 @@ B、抽象不应该依赖于细节，细节应该依赖于抽象。</code></pre>
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <!--
-
-<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -684,11 +825,11 @@ B、抽象不应该依赖于细节，细节应该依赖于抽象。</code></pre>
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
 
 
 
--->
+
         
 
 
@@ -784,6 +925,13 @@ B、抽象不应该依赖于细节，细节应该依赖于抽象。</code></pre>
   
   
 
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
   
 
   
@@ -829,6 +977,19 @@ B、抽象不应该依赖于细节，细节应该依赖于抽象。</code></pre>
   
 
 
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.4"></script>
 
 
 
