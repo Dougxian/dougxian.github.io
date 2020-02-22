@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="ElasticSearch," />
 
 
 
@@ -79,13 +79,16 @@
 
 
 
-<meta name="description" content="分享学习路上的心得和收获，如有错误就还请赐教(QQ:2315921445)">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Doug-Blog">
-<meta property="og:url" content="http://dougxian.github.io/archives/2020/02/index.html">
+<meta name="description" content="ElasticSearch是一个分布式文档型数据库Es是如何存储、检索数据的？在了解Es的存储机制，先要了解什么是集群(cluster)、节点(node)和分片(shard)。  集群当我们启动一个单独的Es节点时,就形成了一个集群，只不过在这个集群中只有一个节点（集群和分布式的区别在于集群是一个整体概念，即客户端对待集群适当做一个业务整体；分布式强点的则是“分”，整个业务被分成多个子业务，在不同">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ElasticSearch学习（1）">
+<meta property="og:url" content="http://dougxian.github.io/2020/02/22/ElasticSearch%E5%AD%A6%E4%B9%A0%EF%BC%881%EF%BC%89/index.html">
 <meta property="og:site_name" content="Doug-Blog">
-<meta property="og:description" content="分享学习路上的心得和收获，如有错误就还请赐教(QQ:2315921445)">
+<meta property="og:description" content="ElasticSearch是一个分布式文档型数据库Es是如何存储、检索数据的？在了解Es的存储机制，先要了解什么是集群(cluster)、节点(node)和分片(shard)。  集群当我们启动一个单独的Es节点时,就形成了一个集群，只不过在这个集群中只有一个节点（集群和分布式的区别在于集群是一个整体概念，即客户端对待集群适当做一个业务整体；分布式强点的则是“分”，整个业务被分成多个子业务，在不同">
+<meta property="article:published_time" content="2020-02-22T06:12:52.000Z">
+<meta property="article:modified_time" content="2020-02-22T08:37:05.485Z">
 <meta property="article:author" content="Dougxian">
+<meta property="article:tag" content="ElasticSearch">
 <meta name="twitter:card" content="summary">
 
 
@@ -116,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://dougxian.github.io/archives/2020/02/"/>
+  <link rel="canonical" href="http://dougxian.github.io/2020/02/22/ElasticSearch学习（1）/"/>
 
 
 
 
 
-  <title>归档 | Doug-Blog</title>
+  <title>ElasticSearch学习（1） | Doug-Blog</title>
   
 
 
@@ -151,7 +154,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -283,74 +286,194 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
-
-      <span class="archive-page-counter">
-        
-        
-        
-          
-        
-        嗯..! 目前共计 3 篇日志。 继续努力。
-      </span>
-
-      
-
-        
-        
-        
-
-        
-          
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2020">2020</h1>
-          </div>
-        
-        
-
-        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://dougxian.github.io/2020/02/22/ElasticSearch%E5%AD%A6%E4%B9%A0%EF%BC%881%EF%BC%89/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Dougxian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Doug-Blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2020/02/22/ElasticSearch%E5%AD%A6%E4%B9%A0%EF%BC%881%EF%BC%89/" itemprop="url">
-              
-                <span itemprop="name">ElasticSearch学习（1）</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">ElasticSearch学习（1）</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2020-02-22T14:12:52+08:00"
-              content="2020-02-22" >
-          02-22
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-22T14:12:52+08:00">
+                2020-02-22
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%BD%BF%E7%94%A8%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index">
+                    <span itemprop="name">使用工具</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
+      
 
+      
+        <h2 id="ElasticSearch是一个分布式文档型数据库"><a href="#ElasticSearch是一个分布式文档型数据库" class="headerlink" title="ElasticSearch是一个分布式文档型数据库"></a>ElasticSearch是一个分布式文档型数据库</h2><h3 id="Es是如何存储、检索数据的？"><a href="#Es是如何存储、检索数据的？" class="headerlink" title="Es是如何存储、检索数据的？"></a>Es是如何存储、检索数据的？</h3><p>在了解Es的存储机制，先要了解什么是集群(cluster)、节点(node)和分片(shard)。</p>
+<blockquote>
+<p><b>集群</b><br>当我们启动一个单独的Es节点时,就形成了一个集群，只不过在这个集群中只有一个节点（集群和分布式的区别在于集群是一个整体概念，即客户端对待集群适当做一个业务整体；分布式强点的则是“分”，整个业务被分成多个子业务，在不同的节点完成。）</p>
+</blockquote>
+<blockquote>
+<p><b>节点</b><br>Es集群中的每一个节点就是一个Es实例，都可以单独完成Es的全部业务操作。它们具有相同的<code>cluster.name</code>，它们协同工作，分享数据和负载。</p>
+</blockquote>
+<blockquote>
+<p><b>分片</b><br>分片是一个最小级别的“工作单元”，它保存了索引中所有数据的一部分，每个“分片”分为主分片和副本分片。同时每一个分片还是一个Lucene实例，其本身就是一个完整的搜索引擎。我们的文档被存贮在分片中，并且在分片中被索引，但是应用程序不会直接和分片进行交互，而是跟索引进行交互。这里的作引就可以被认为是一个或多个分片的“逻辑命名空间”。</p>
+</blockquote>
+<h4 id="集群"><a href="#集群" class="headerlink" title="集群"></a>集群</h4><p>启动一个Es集群，该集群中有10个节点分布在不同的服务器上，每个节点中默认含有5个分片，每个分片有1个副本。副本分片和主分片在一个节点上的意义不大，所以在集群中，Master节点会自动调整每个节点中的分片数量和类型。当每个主分片都启动成功，且副分片也启动成功，此时的集群健康状态为<code>blue</code>；当主分pain启动成功，但是副分片没有全部启动成功，集群的健康状态为<code>yello</code>；当主节点没有完全启动成功，集群的健康状态为<code>red</code>。</p>
+<blockquote>
+<p><b>存储过程</b><br>1、客户端向集群中的<code>client_node</code>发送新建、索引和删除请求。<br>2、节点根据文档_<code>id</code>计算出文档属于的分片，假设为分片2，分片2 在<code>node 3</code>，则客户端节点转发请求至<code>node 3</code>.<br>3、<code>node 3</code>在主分片上执行请求，如果执行成功，则转发该请求至分布分片。当所有的副本节点执行成功返回报告后，<code>node 3</code>报告<code>client_node</code>执行成功。</p>
+</blockquote>
+<p>在<code>client_node</code>上看到执行报告时，文档的修改已经生效。从上面的存储过程可以看出，Es存储的数据是分布在整个集群中的。</p>
+<blockquote>
+<p><b>检索过程</b><br>1、<code>client_node</code>向集群中的所有节点发送检索请求。<br>2、每个节点在自己的分片中遍历检索数据，将结果进行排序并返回给<code>client_node</code>。<br>3、<code>client_node</code>将返回的结果进行相关性排序，返回给用户。</p>
+</blockquote>
+
+      
     </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/images/wechat-qcode.jpg" alt="Dougxian wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎您扫一扫上面的微信公众号，订阅我的博客！</div>
+</div>
+
+      </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ElasticSearch/" rel="tag"># ElasticSearch</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/01/20/ElasticSearch%E6%B5%85%E8%B0%88/" rel="next" title="ElasticSearch浅谈">
+                <i class="fa fa-chevron-left"></i> ElasticSearch浅谈
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -358,6 +481,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -378,8 +505,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -467,6 +603,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ElasticSearch是一个分布式文档型数据库"><span class="nav-number">1.</span> <span class="nav-text">ElasticSearch是一个分布式文档型数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Es是如何存储、检索数据的？"><span class="nav-number">1.1.</span> <span class="nav-text">Es是如何存储、检索数据的？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#集群"><span class="nav-number">1.1.1.</span> <span class="nav-text">集群</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -607,6 +759,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
