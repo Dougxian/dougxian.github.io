@@ -1,6 +1,6 @@
 ---
 title: Centos7部署MongoDB
-date: 2019-11-19 17:20:07
+date: 2019-08-11 17:20:07
 tags:
 - MongoDB
 ---
