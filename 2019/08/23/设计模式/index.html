@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="Doug Xian">
   <meta name="keywords" content="">
-  <title>native关键字 - Dougxian</title>
+  <title>设计模式（一） - Dougxian</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.5.3/css/bootstrap.min.css" />
 
@@ -174,9 +174,9 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="native关键字">
+            <span class="h2" id="subtitle" title="设计模式（一）">
               
-                native关键字
+                设计模式（一）
               
             </span>
 
@@ -191,8 +191,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2019-11-03 17:23" pubdate>
-        2019年11月3日 下午
+      <time datetime="2019-08-23 00:00" pubdate>
+        2019年8月23日 凌晨
       </time>
     </span>
   
@@ -203,7 +203,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      616 字
+      1k 字
     </span>
   
 
@@ -213,7 +213,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      8
+      10
        分钟
     </span>
   
@@ -251,7 +251,7 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">native关键字</h1>
+            <h1 style="display: none">设计模式（一）</h1>
             
               <p class="note note-info">
                 
@@ -260,89 +260,82 @@
               </p>
             
             <div class="markdown-body">
-              <blockquote>
-<p><strong>初见</strong><br>今天在看Thread start方法源码时其中的start0方法中的出现了native关键字</p>
+              <h1 id="简单工厂模式"><a href="#简单工厂模式" class="headerlink" title="简单工厂模式"></a>简单工厂模式</h1><h2 id="为什么要有工厂模式？"><a href="#为什么要有工厂模式？" class="headerlink" title="为什么要有工厂模式？"></a>为什么要有工厂模式？</h2><blockquote>
+<p>因为在有很多对象需要集中集中操作的时候，可以减少代码的复用和提高代码的灵活性，具体参考下例。</p>
 </blockquote>
-<pre><code class="hljs aspectj"><span class="hljs-keyword">private</span> <span class="hljs-keyword">native</span> <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">startO</span><span class="hljs-params">()</span></span>;</code></pre>
+<h2 id="什么是工厂模式？"><a href="#什么是工厂模式？" class="headerlink" title="什么是工厂模式？"></a>什么是工厂模式？</h2><h3 id="1、什么是工厂？"><a href="#1、什么是工厂？" class="headerlink" title="1、什么是工厂？"></a>1、什么是工厂？</h3><pre><code class="hljs typescript">一个专门来创建实例的类叫做工厂，下面是一个简单的例子。
+<span class="hljs-keyword">public</span> classs Factory&#123;  <span class="hljs-comment">//创建工厂类</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-built_in">Object</span> <span class="hljs-function"><span class="hljs-title">CreateBean</span>(<span class="hljs-params"><span class="hljs-built_in">Object</span> arg</span>)</span>&#123;
 
-<p>native关键字是啥呢？</p>
-<blockquote>
-<p><strong>google</strong><br>当java中的方法用native来修饰的时候，就表示这个方法是一个本地方法。换言之，就是不是使用java语言实现的方法。java在实现多线程时就使用了大量的本地方法，理由很简单java作为跨平台的语言，在与底层系统进行的交互的时候无法通过java语言实现，所以还是需要依靠例如C语言、C++语言来实现与底层的交互。同时这些语言的特性还能极大的提高java程序的运行效率。</p>
-</blockquote>
-<blockquote>
-<p><strong>使用</strong><br>Java平台与主机平台的交互依靠的是JNI（Java Native Interface），即Java本地接口。<br>Java Code———&gt;JNI————&gt;C / C++ Code<br>演示一下调用本地方法的过程：<br>1、创建一个Java类，包含一个native方法和loadLibrary方法</p>
-</blockquote>
-<pre><code class="hljs typescript"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FirstNative</span></span>
-<span class="hljs-class"></span>&#123;
-    <span class="hljs-keyword">static</span>
-    &#123;
-        <span class="hljs-comment">//加载类库</span>
-        System.loadLibrary(<span class="hljs-string">&quot;FirstNative&quot;</span>);
-    &#125;
-     <span class="hljs-comment">//native函数</span>
-    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> native <span class="hljs-built_in">void</span> sayHello();
-     
-    <span class="hljs-meta">@SuppressWarnings</span>(<span class="hljs-string">&quot;static-access&quot;</span>)
-    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-built_in">void</span> main(<span class="hljs-built_in">String</span>[] args)
-    &#123;
-        <span class="hljs-keyword">new</span> HelloNative().sayHello();
+        <span class="hljs-comment">//根据参数创造不同的子类，实现多态。</span>
+        <span class="hljs-built_in">Object</span> ob = <span class="hljs-literal">null</span>;
+        <span class="hljs-keyword">switch</span>(arg)&#123;
+            <span class="hljs-keyword">case</span>: arg1&#123;ob = <span class="hljs-keyword">new</span> Object1();&#125;
+
+            <span class="hljs-keyword">case</span>: .....
+
+           <span class="hljs-keyword">break</span>;
+        &#125;
+
     &#125;
 &#125;</code></pre>
 
-<p>直接运行之后出现报错信息</p>
-<pre><code class="hljs css"><span class="hljs-selector-tag">Exception</span> <span class="hljs-selector-tag">in</span> <span class="hljs-selector-tag">thread</span> &quot;<span class="hljs-selector-tag">main</span>&quot; <span class="hljs-selector-tag">java</span><span class="hljs-selector-class">.lang</span><span class="hljs-selector-class">.UnsatisfiedLinkError</span>: <span class="hljs-selector-tag">no</span> <span class="hljs-selector-tag">FirstNative</span> <span class="hljs-selector-tag">in</span> <span class="hljs-selector-tag">java</span><span class="hljs-selector-class">.library</span><span class="hljs-selector-class">.path</span>
-        <span class="hljs-selector-tag">at</span> <span class="hljs-selector-tag">java</span><span class="hljs-selector-class">.lang</span><span class="hljs-selector-class">.ClassLoader</span><span class="hljs-selector-class">.loadLibrary</span>(<span class="hljs-selector-tag">ClassLoader</span><span class="hljs-selector-class">.java</span><span class="hljs-selector-pseudo">:1867)</span>
-        <span class="hljs-selector-tag">at</span> <span class="hljs-selector-tag">java</span><span class="hljs-selector-class">.lang</span><span class="hljs-selector-class">.Runtime</span><span class="hljs-selector-class">.loadLibrary0</span>(<span class="hljs-selector-tag">Runtime</span><span class="hljs-selector-class">.java</span><span class="hljs-selector-pseudo">:870)</span>
-        <span class="hljs-selector-tag">at</span> <span class="hljs-selector-tag">java</span><span class="hljs-selector-class">.lang</span><span class="hljs-selector-class">.System</span><span class="hljs-selector-class">.loadLibrary</span>(<span class="hljs-selector-tag">System</span><span class="hljs-selector-class">.java</span><span class="hljs-selector-pseudo">:1122)</span>
-        <span class="hljs-selector-tag">at</span> <span class="hljs-selector-tag">test</span>.&lt;<span class="hljs-selector-tag">clinit</span>&gt;(<span class="hljs-selector-tag">test</span><span class="hljs-selector-class">.java</span><span class="hljs-selector-pseudo">:6)</span></code></pre>
+<h2 id="工厂模式的好处有哪些？"><a href="#工厂模式的好处有哪些？" class="headerlink" title="工厂模式的好处有哪些？"></a>工厂模式的好处有哪些？</h2><pre><code class="hljs plain">提高代码服用性和灵活性，工厂模式解决了对象创建问题。</code></pre>
 
-<p>表示找不到类,也难怪哦，我们自己写的类名，JVM怎么会知道呢。接下来创建它。</p>
-<pre><code class="hljs awk"><span class="hljs-regexp">//</span>编译源码
- javac FirstNative.java
+<p>Tips:</p>
+<blockquote>
+<p>聚合表示一种弱的“拥有”关系，体现的是A对象可以包含B对象，但是B对象不是A对象的一部分。。</p>
+</blockquote>
+<blockquote>
+<p>封装的好处在于将逻辑处理分离开来，到达高复用、高扩展、高灵活性的的目的。</p>
+</blockquote>
+<hr>
+<h1 id="策略模式"><a href="#策略模式" class="headerlink" title="策略模式"></a>策略模式</h1><blockquote>
+<p>以解决商场收银员业务为背景。</p>
+</blockquote>
+<h2 id="什么是策略模式？"><a href="#什么是策略模式？" class="headerlink" title="什么是策略模式？"></a>什么是策略模式？</h2><blockquote>
+<p>策略模式：它定义了算法家族，分别封装起来，让它们之间可以相互替换，此模式可以让算法的变化不会影响带到适应算法的客户。</p>
+</blockquote>
+<p><img src="Strategy.jpg" srcset="/img/loading.gif" alt="策略模式结构图"></p>
+<h2 id="策略模式的使用。"><a href="#策略模式的使用。" class="headerlink" title="策略模式的使用。"></a>策略模式的使用。</h2><pre><code class="hljs plain">在什么时候使用策略模式呢？</code></pre>
 
- <span class="hljs-regexp">//</span>生成头文件,有个小坑，就是-classpath参数是必须的，而且是绝对路径（到类文件所在的文件夹）。
-javah -classpath F:\worksp\Javacode FirstNative</code></pre>
+<blockquote>
+<p>策略模式是用来封装算法的，在实践中我们发现可以用它来封装几乎任何类型的规则。只要在不同的时间使用不同的规则，就可以使用策略模式来封装这种变化的可能性。在基本的策略模式中，选择具体的算法实现是由客户端来选择并转给上下文对象来处理的，但是这并没有减少客户端需要判断的压力。简单工厂模式与策略模式的结合可以将选择的任务交给上下文对象。</p>
+</blockquote>
+<p>Tips:</p>
+<blockquote>
+<p>面向对象编程并不是类越多越好，分类的目的是分装，分类的基础是抽象，分类的依据是具有相同的属性和操作。</p>
+</blockquote>
+<blockquote>
+<p>封装变化点是面向对象一种重要的思想。</p>
+</blockquote>
+<hr>
+<h1 id="单一职责模式"><a href="#单一职责模式" class="headerlink" title="单一职责模式"></a>单一职责模式</h1><h2 id="什么是职责单一模式？"><a href="#什么是职责单一模式？" class="headerlink" title="什么是职责单一模式？"></a>什么是职责单一模式？</h2><blockquote>
+<p>就一个类而言，应该只有一个引起它变化的原因。</p>
+</blockquote>
+<h2 id="什么情景下使用职责单一模式？"><a href="#什么情景下使用职责单一模式？" class="headerlink" title="什么情景下使用职责单一模式？"></a>什么情景下使用职责单一模式？</h2><blockquote>
+<p>如果一个类承担的职责过多，就相当于这些职责耦合在一起。一个职责的变化可能会削弱或者抑制这个类完成其他职责的能力。这种耦合会导致脆弱的设计，当变化发生时，设计会遭受到意想不到的破坏。软件设计真正要做的内容是发现职责并且把这些职责进行分离。如果能够想到多于一个的动机去改变这个类，那么这个类就具有多于一个的职责。</p>
+</blockquote>
+<p>Tips：</p>
+<hr>
+<h1 id="开放封闭原则"><a href="#开放封闭原则" class="headerlink" title="开放封闭原则"></a>开放封闭原则</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><blockquote>
+<p>对于更改是封闭的，对于扩展是开放的。</p>
+</blockquote>
+<h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2><blockquote>
+<p>当需求发生改变时，需要的考虑的是通过增添代码来实现需求，而不是通过修改。例如在加法系统的基础上要实现减法，可以先将计算进行抽象，然后通过多态实现加法和减法。在此后的变更中就可以通过抽象类来扩展乘法和其他运算了。</p>
+</blockquote>
+<blockquote>
+<p>在软件设计中这种不可以修改，但是可以扩展的思想是一种重要的思想。</p>
+</blockquote>
+<hr>
+<h1 id="依赖倒转原则"><a href="#依赖倒转原则" class="headerlink" title="依赖倒转原则"></a>依赖倒转原则</h1><h2 id="定义："><a href="#定义：" class="headerlink" title="定义："></a>定义：</h2><pre><code class="hljs plain">抽象不应该依赖于细节，细节应该依赖于抽象。</code></pre>
 
-<p>生成的.h文件，其中的头文件jni.h可以在%JAVA_HOME%/include中找到</p>
-<pre><code class="hljs cpp"><span class="hljs-comment">/* DO NOT EDIT THIS FILE - it is machine generated */</span>
-<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;jni.h&gt;</span></span>
-<span class="hljs-comment">/* Header for class FirstNative */</span>
+<blockquote>
+<p>简而言之就是针对接口编程，而不是对实现编程。</p>
+</blockquote>
+<h2 id="原则："><a href="#原则：" class="headerlink" title="原则："></a>原则：</h2><pre><code class="hljs dns"><span class="hljs-keyword">A</span>、高层模块不应该依赖于底层模块。两个都应该依赖抽象。
 
-<span class="hljs-meta">#<span class="hljs-meta-keyword">ifndef</span> _Included_FirstNative</span>
-<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> _Included_FirstNative</span>
-<span class="hljs-meta">#<span class="hljs-meta-keyword">ifdef</span> __cplusplus</span>
-<span class="hljs-keyword">extern</span> <span class="hljs-string">&quot;C&quot;</span> &#123;
-<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span>
-<span class="hljs-comment">/*</span>
-<span class="hljs-comment"> * Class:     FirstNative</span>
-<span class="hljs-comment"> * Method:    Hello</span>
-<span class="hljs-comment"> * Signature: ()V</span>
-<span class="hljs-comment"> */</span>
-JNIEXPORT <span class="hljs-keyword">void</span> JNICALL Java_FirstNative_Hello
-  (JNIEnv *, jclass);
-
-<span class="hljs-meta">#<span class="hljs-meta-keyword">ifdef</span> __cplusplus</span>
-&#125;
-<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span>
-<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span></code></pre>
-
-<p>根据头文件，来生成本地方法，使用C语言来实现。</p>
-<pre><code class="hljs dts"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-string">&quot;FirstNative.h&quot;</span></span>
-<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span></span>
- 
-JNIEXPORT void JNICALL Java_FirstNative_Hello
-&#123;
-    printf(<span class="hljs-string">&quot;Hello，Native&quot;</span>);    
-&#125;</code></pre>
-
-<p>生成DLL动态链接库，用java程序加载库，调用函数即可</p>
-<pre><code class="hljs xl"><span class="hljs-function"><span class="hljs-title">gcc</span> -m64  -Wl,--add-stdcall-alias -I&quot;[JDK-&gt;</span><span class="hljs-function"><span class="hljs-title">include</span>文件夹绝对路径]&quot; -I&quot;[JDK-&gt;</span><span class="hljs-function"><span class="hljs-title">include</span>-&gt;</span>win32文件夹绝对路径]<span class="hljs-string">&quot; -shared -o [链接库名称] [C源码文件]</span></code></pre>
-
-<p>执行</p>
-<pre><code class="hljs ebnf"><span class="hljs-attribute">java FirstNative</span></code></pre>
-
-<p>成功打印</p>
-<pre><code class="hljs ebnf"><span class="hljs-attribute">Hello Native</span></code></pre>
+B、抽象不应该依赖于细节，细节应该依赖于抽象。</code></pre>
             </div>
             <hr>
             <div>
@@ -352,7 +345,7 @@ JNIEXPORT void JNICALL Java_FirstNative_Hello
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/Java/">Java</a>
+                      <a class="hover-with-bg" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>
                     
                   </div>
                 
@@ -365,9 +358,9 @@ JNIEXPORT void JNICALL Java_FirstNative_Hello
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/09/01/ElasticSearch-1/">
+                      <a href="/2019/09/19/ElasticSearch-2/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">ElasticSearch-1</span>
+                        <span class="hidden-mobile">ElasticSearch-2</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -375,8 +368,8 @@ JNIEXPORT void JNICALL Java_FirstNative_Hello
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2019/11/01/Java%E9%AB%98%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B-1/">
-                        <span class="hidden-mobile">Java高并发编程-1</span>
+                      <a href="/2019/08/11/Centos7%E9%83%A8%E7%BD%B2MongoDB/">
+                        <span class="hidden-mobile">Centos7部署MongoDB</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

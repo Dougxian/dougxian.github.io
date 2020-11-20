@@ -17,25 +17,9 @@
   <meta name="description" content="">
   <meta name="author" content="Doug Xian">
   <meta name="keywords" content="">
-  <title>MongoDB之oplog - Dougxian</title>
+  <title>归档 - Dougxian</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.5.3/css/bootstrap.min.css" />
-
-
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
-  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
-
-  
-    
-    
-      
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/github-gist.min.css" />
-    
-  
-
-  
-    <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
-  
 
 
 
@@ -63,7 +47,7 @@
 
 
 <body>
-  <header style="height: 70vh;">
+  <header style="height: 60vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -174,61 +158,11 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="MongoDB之oplog">
+            <span class="h2" id="subtitle" title="归档">
               
-                MongoDB之oplog
+                归档
               
             </span>
-
-            
-              <div class="mt-3">
-  
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-author" aria-hidden="true"></i>
-      Doug Xian
-    </span>
-  
-  
-    <span class="post-meta">
-      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2019-11-19 17:21" pubdate>
-        2019年11月19日 下午
-      </time>
-    </span>
-  
-</div>
-
-<div class="mt-1">
-  
-    
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-chart"></i>
-      355 字
-    </span>
-  
-
-  
-    
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-clock-fill"></i>
-      
-      
-      3
-       分钟
-    </span>
-  
-
-  
-  
-    
-      <!-- 不蒜子统计文章PV -->
-      <span id="busuanzi_container_page_pv" style="display: none">
-        <i class="iconfont icon-eye" aria-hidden="true"></i>
-        <span id="busuanzi_value_page_pv"></span> 次
-      </span>
-    
-  
-</div>
 
             
           </div>
@@ -241,103 +175,46 @@
 
   <main>
     
+      <div class="container nopadding-md">
+        <div class="py-5" id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+<div class="list-group">
+  <p class="h4">共计 7 篇文章</p>
+  <hr>
+  
+  
+    
       
+      <p class="h5">2019</p>
+    
+    <a href="/2019/08/23/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="list-group-item list-group-item-action">
+      <span class="archive-post-title">设计模式（一）</span>
+      <time style="float: right;">08-23</time>
+    </a>
+  
+    
+    <a href="/2019/08/11/Centos7%E9%83%A8%E7%BD%B2MongoDB/" class="list-group-item list-group-item-action">
+      <span class="archive-post-title">Centos7部署MongoDB</span>
+      <time style="float: right;">08-11</time>
+    </a>
+  
+</div>
 
-<div class="container-fluid">
-  <div class="row">
-    <div class="d-none d-lg-block col-lg-2"></div>
-    <div class="col-lg-8 nopadding-md">
-      <div class="container nopadding-md" id="board-ctn">
-        <div class="py-5" id="board">
-          <article class="post-content mx-auto">
-            <!-- SEO header -->
-            <h1 style="display: none">MongoDB之oplog</h1>
-            
-              <p class="note note-info">
-                
-                  本文最后更新于：2020年11月19日 上午
-                
-              </p>
-            
-            <div class="markdown-body">
-              <blockquote>
-<p><strong>初识oplog</strong><br>在进行mongoDB与Es数据同步时，被告知只有开启MongoDB副本集才可以进行数据同步，副本集最重要的一点就是节点之间同步数据的以及MongoDB与Es同步数据，依靠的就是oplog。</p>
-</blockquote>
-<blockquote>
-<p><strong>认识oplog</strong><br>oplog 是 MongoDB 主从复制层面的一个概念，通过 oplog 来实现复制集节点间数据同步，客户端将数据写入到 Primary，Primary 写入数据后会记录一条 oplog，Secondary 从 Primary（或其他 Secondary ）拉取 oplog 并重放，来确保复制集里每个节点存储相同的数据。<br>oplog 在 MongoDB 里是一个普通的 capped collection，对于存储引擎来说，oplog只是一部分普通的数据而已。——MongoDB中文社区</p>
-</blockquote>
-<blockquote>
-<p><strong>Tips</strong></p>
-</blockquote>
-<ul>
-<li>capped collection 为一个固定大小集合，oplog存在覆盖的情况，实际上这种情况也是允许的，也不能一直保存这些“操作日志”。所以设置oplog所在集合的大小是一件十分重要的事情，设置过小会导致数据备份丢失的危险；设置过大会浪费存储空。一般默认的是disk空间的5%（1G~50G）。可以通过–oplogSize参数来设置大小。</li>
-<li>oplog中的同一条记录执行多次的结果和执行一次的结果是一样的。</li>
-</ul>
-<p>oplog是MongoDB与Es数据同步的基础，mongo-connrctor是利用oplog向Es中写入数据的。</p>
 
-            </div>
-            <hr>
-            <div>
-              <div class="post-metas mb-3">
-                
-                
-                  <div class="post-meta">
-                    <i class="iconfont icon-tags"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/MongoDB/">MongoDB</a>
-                    
-                  </div>
-                
+
+
+
               </div>
-              
-                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
-              
-              
-                <div class="post-prevnext row">
-                  <article class="post-prev col-6">
-                    
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2019/11/19/Centos7%E9%83%A8%E7%BD%B2MongoDB/">
-                        <span class="hidden-mobile">Centos7部署MongoDB</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
             </div>
-
-            
-          </article>
+          </div>
         </div>
       </div>
-    </div>
-    
-      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
-        <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
-  <div class="toc-body" id="toc-body"></div>
-</div>
-
-      </div>
-    
-  </div>
-</div>
-
-<!-- Custom -->
-
-  <div class="col-lg-7 mx-auto nopadding-md">
-    <div class="container custom post-custom mx-auto">
-      <img src="https://octodex.github.com/images/jetpacktocat.png" srcset="/img/loading.gif" class="rounded mx-auto d-block mt-5" style="width:150px; height:150px;">
-    </div>
-  </div>
-
-
     
 
     
@@ -444,15 +321,9 @@
 
 
 
-  <script  src="https://cdn.staticfile.org/tocbot/4.12.0/tocbot.min.js" ></script>
 
 
 
-  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
-
-
-
-  <script  src="https://cdn.staticfile.org/anchor-js/4.3.0/anchor.min.js" ></script>
 
 
 
