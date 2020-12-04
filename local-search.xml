@@ -4,19 +4,82 @@
   
   
   <entry>
-    <title>ElasticSearch-1</title>
-    <link href="/2020/09/01/ElasticSearch-1/"/>
-    <url>/2020/09/01/ElasticSearch-1/</url>
+    <title>双亲委托机制</title>
+    <link href="/2020/12/02/%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%89%98%E6%9C%BA%E5%88%B6/"/>
+    <url>/2020/12/02/%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%89%98%E6%9C%BA%E5%88%B6/</url>
     
-    <content type="html"><![CDATA[<h2 id="Es是什么？"><a href="#Es是什么？" class="headerlink" title="Es是什么？"></a>Es是什么？</h2><pre><code class="hljs plain">ElasticSearch是一款基于Lucene的全文搜索引擎。</code></pre><h3 id="什么是全文搜索引擎？"><a href="#什么是全文搜索引擎？" class="headerlink" title="什么是全文搜索引擎？"></a>什么是全文搜索引擎？</h3><blockquote><p>百度：全文搜索引擎就是通过从互联网上提取的各个网站的信息（以网页文字为主）而建立的数据库中，检索与用户查询条件匹配的相关记录，然后按一定的排列顺序将结果返回给用户。</p></blockquote><p>Es是对Lucene的封装，同时也是Lucene的分布式解决方案。将绝大多数的Lucene功能封装使其更容易被使用。Github、Stackoverflow等网站都在使用ElasticSearch作为搜索引擎。同时其优秀的分布式作业管理机制使其越来越被开发人员所喜爱。</p><h2 id="Es安装"><a href="#Es安装" class="headerlink" title="Es安装"></a>Es安装</h2><pre><code class="hljs mipsasm">值得注意的是Es是依赖于<span class="hljs-keyword">Java环境的，当运行在Java </span><span class="hljs-number">8</span> 环境时会建议使用<span class="hljs-keyword">Java </span><span class="hljs-number">11</span>，因为在后续的版本中将取消对<span class="hljs-keyword">Java </span><span class="hljs-number">8</span> 的支持。</code></pre><h3 id="一、安装方式"><a href="#一、安装方式" class="headerlink" title="一、安装方式"></a>一、安装方式</h3><blockquote><p>目前官网不再提供源码下载，但是还是建议使用源码的方式进行安装，因为后续修改配置文件会比较方便。</p></blockquote><pre><code class="hljs awk"><span class="hljs-regexp">//</span>linux环境<span class="hljs-regexp">//</span>获取源码包$ wget https:<span class="hljs-regexp">//</span>artifacts.elastic.co<span class="hljs-regexp">/downloads/</span>elasticsearch/elasticsearch-<span class="hljs-number">5.6</span>.<span class="hljs-number">9</span>.tar<span class="hljs-regexp">//</span>解压源码包$ tar -zxvf elasticsearch-<span class="hljs-number">5.6</span>.<span class="hljs-number">9</span>.tar<span class="hljs-regexp">//</span>进入源码主目录$ cd elasticsearch-<span class="hljs-number">5.6</span>.<span class="hljs-number">9</span>/</code></pre><p>至此，Es的安装就已经全部安装完毕了。</p><h3 id="二、配置"><a href="#二、配置" class="headerlink" title="二、配置"></a>二、配置</h3><p>打开./config/elasticsearch.yml文件</p><pre><code class="hljs stylus">vim ./config/elasticsearch.yml<span class="hljs-comment">//修改如下内容</span>cluster<span class="hljs-selector-class">.name</span>: 集群名称node<span class="hljs-selector-class">.name</span>: 节点名称path<span class="hljs-selector-class">.data</span>: 数据存储位置（目录位置，不需要创建文件）path<span class="hljs-selector-class">.logs</span>: 日志存储位置（同上）network<span class="hljs-selector-class">.host</span>: 绑定的ip（默认是<span class="hljs-number">127.0</span>.<span class="hljs-number">0.1</span>，本机访问，可以改为<span class="hljs-number">0.0</span>.<span class="hljs-number">0.0</span>使其能够在公网访问）discovery<span class="hljs-selector-class">.zen</span><span class="hljs-selector-class">.ping</span><span class="hljs-selector-class">.unicasts</span><span class="hljs-selector-class">.hosts</span>: 提供其他 Elasticsearch 服务节点的单点广播发现功能。配置集群中基于主机 TCP 端口的其他 Elasticsearch 服务的逗号分隔列表。例如：discovery<span class="hljs-selector-class">.zen</span><span class="hljs-selector-class">.ping</span><span class="hljs-selector-class">.unicast</span>.hosts=<span class="hljs-string">&quot;localhost:9300,localhost:9301,localhost:9302</span></code></pre><p>基本的配置如上所示。</p><h3 id="三、启动"><a href="#三、启动" class="headerlink" title="三、启动"></a>三、启动</h3><pre><code class="hljs awk"><span class="hljs-regexp">//</span>启动命令（Es主目录下）.<span class="hljs-regexp">/bin/</span>elasticsearch</code></pre><blockquote><p>如果是以root的身份去启动程序，会有报错。需要更换一个身份用户再次启动，同时将Es所在的文件夹权限设置为该用户可以访问和读写，否则会有报错出现。最简单的方法就是将Es文件夹及其子文件权限设置为777。重新执行指令之后会有日志信息打印出来，如果一切顺利，就可以访问<a href="http://ip地址:9200/">http://ip地址:9200</a> 来体验一下了。</p></blockquote><pre><code class="hljs json"><span class="hljs-comment">//访问服务器所返回的JSON数据</span>&#123;  <span class="hljs-attr">&quot;name&quot;</span> : <span class="hljs-string">&quot;节点名称&quot;</span>,  <span class="hljs-attr">&quot;cluster_name&quot;</span> : <span class="hljs-string">&quot;集群名称&quot;</span>,  <span class="hljs-attr">&quot;cluster_uuid&quot;</span> : <span class="hljs-string">&quot;集群ID&quot;</span>,  <span class="hljs-attr">&quot;version&quot;</span> : &#123;    <span class="hljs-attr">&quot;number&quot;</span> : <span class="hljs-string">&quot;Es版本号&quot;</span>,    <span class="hljs-attr">&quot;build_hash&quot;</span> : <span class="hljs-string">&quot;877a590&quot;</span>,    <span class="hljs-attr">&quot;build_date&quot;</span> : <span class="hljs-string">&quot;2018-04-12T16:25:14.838Z&quot;</span>,    <span class="hljs-attr">&quot;build_snapshot&quot;</span> : <span class="hljs-literal">false</span>,    <span class="hljs-attr">&quot;lucene_version&quot;</span> : <span class="hljs-string">&quot;6.6.1&quot;</span>  &#125;,  <span class="hljs-attr">&quot;tagline&quot;</span> : <span class="hljs-string">&quot;You Know, for Search&quot;</span>&#125;</code></pre><p>如果不顺利，根据报错信息。</p><blockquote><p>如果报错关于内存，请检查服务器的内存大小，如果小于2G，不建议在此服务器部署Es。即使程序运行正常，无端出现kill情况的也是由于内存过小导致的。</p></blockquote><blockquote><p>报错出现程序创建文件受到限制，需要修改该用户的最大创建文件数量（百度搜索即可）</p></blockquote>]]></content>
+    <content type="html"><![CDATA[<p><strong>双亲委托机制</strong></p><p>​    双亲委托机制又叫父委托机制，描述为在当前类加载器加载某一个类时，会先调用父类加载器加载此类，如果付类加载器还有父类，就迭代委托，如果父类已经加载过此类，返回即可；如果没有，就尝试加载此类，加载失败，就交给子类加载器加载，依次向下。逻辑图如下图。</p><p><img src="D:\Hexo\Blogs\source_posts\双亲委托机制\类加载器的父委托机制.png"></p><p><strong>双亲委托机制的用处</strong></p><p>双亲委托机制是JVM实现的一种类加载方式，这样做的好处其一是可以保证所有的类只被加载一次，不会出现同一类被记载多次，造成资源浪费和程序中引用的混乱。其二是可以保证JVM核心类不会被改写，假如用户尝试加载自建String类，在委托的过程中，JVM自带的启动类加载器、扩展类加载器、应用类加载器已经加载过String类，所以会直接抛出此类，不会再让别的加载器加载这个类。</p><p><strong>双亲委托机制的缺点</strong></p><p>虽然双亲委托机制有这样的优点但是在实际的开发中，还是需要绕过此机制，例如在实现热部署中，需要卸载部署模块的所有类，类对象虽然会被GC，但是最直接的办法就是卸载这些类的类加载器，但是系统的类加载器是不可能被卸载的，所以需要自己实现类加载器，为了保证模块中的类是由自建类加载器加载的，就需要绕过系统应用类加载器对模块类的加载。</p>]]></content>
     
     
     
     <tags>
       
-      <tag>ElasticSearch</tag>
+      <tag>Java</tag>
+      
+      <tag>JVM</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Map.getOrDefault方法</title>
+    <link href="/2020/11/27/Map-getOrDefault%E6%96%B9%E6%B3%95/"/>
+    <url>/2020/11/27/Map-getOrDefault%E6%96%B9%E6%B3%95/</url>
+    
+    <content type="html"><![CDATA[<p>源码如下：</p><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">default</span> V <span class="hljs-title">getOrDefault</span><span class="hljs-params">(Object key, V defaultValue)</span> </span>&#123;        V v;        <span class="hljs-comment">//存在此key的值或者存在key，返沪key对应的value，否则返回你设置的defaultValue</span>        <span class="hljs-keyword">return</span> (((v = get(key)) != <span class="hljs-keyword">null</span>) || containsKey(key))            ? v            : defaultValue;    &#125;</code></pre><p>用法：</p><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">fourSumCount</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] A, <span class="hljs-keyword">int</span>[] B, <span class="hljs-keyword">int</span>[] C, <span class="hljs-keyword">int</span>[] D)</span> </span>&#123;        Map&lt;Integer, Integer&gt; countAB = <span class="hljs-keyword">new</span> HashMap&lt;Integer, Integer&gt;();        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> u : A) &#123;            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> v : B) &#123;                <span class="hljs-comment">//存在就取值加一，否则返回defaultValue = 0</span>                countAB.put(u + v, countAB.getOrDefault(u + v, <span class="hljs-number">0</span>) + <span class="hljs-number">1</span>);            &#125;        &#125;        <span class="hljs-keyword">int</span> ans = <span class="hljs-number">0</span>;        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> u : C) &#123;            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> v : D) &#123;                <span class="hljs-keyword">if</span> (countAB.containsKey(-u - v)) &#123;                    ans += countAB.get(-u - v);                &#125;            &#125;        &#125;        <span class="hljs-keyword">return</span> ans;    &#125;&#125;</code></pre>]]></content>
+    
+    
+    
+    <tags>
       
       <tag>Java</tag>
+      
+      <tag>Map</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Linux下执行 go builld 无反应</title>
+    <link href="/2020/11/25/inux%E4%B8%8B%E6%89%A7%E8%A1%8C-go-builld-%E6%97%A0%E6%B3%95%E5%BA%94/"/>
+    <url>/2020/11/25/inux%E4%B8%8B%E6%89%A7%E8%A1%8C-go-builld-%E6%97%A0%E6%B3%95%E5%BA%94/</url>
+    
+    <content type="html"><![CDATA[<p>main函数所在的的包必须是包名为main的包。如下图</p><p><img src="D:\Hexo\Blogs\source_posts\inux下执行-go-builld-无法应\main函数.png"></p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>Linux</tag>
+      
+      <tag>Go</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>.net Core实现AOP</title>
+    <link href="/2020/11/24/net-Core%E5%AE%9E%E7%8E%B0AOPP/"/>
+    <url>/2020/11/24/net-Core%E5%AE%9E%E7%8E%B0AOPP/</url>
+    
+    <content type="html"><![CDATA[<h3 id="AOP"><a href="#AOP" class="headerlink" title="AOP"></a>AOP</h3><p>AOP（面向切面编程）首先AOP不是和OOP一样，属于独立的编程模式，只是OOP的辅助开发模式。</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>.net Core</tag>
+      
+      <tag>AOP</tag>
       
     </tags>
     
@@ -87,6 +150,27 @@
     <url>/2019/09/19/ElasticSearch-2/</url>
     
     <content type="html"><![CDATA[<h2 id="ElasticSearch是一个分布式文档型数据库"><a href="#ElasticSearch是一个分布式文档型数据库" class="headerlink" title="ElasticSearch是一个分布式文档型数据库"></a>ElasticSearch是一个分布式文档型数据库</h2><h3 id="Es是如何存储、检索数据的？"><a href="#Es是如何存储、检索数据的？" class="headerlink" title="Es是如何存储、检索数据的？"></a>Es是如何存储、检索数据的？</h3><p>在了解Es的存储机制，先要了解什么是集群(cluster)、节点(node)和分片(shard)。</p><blockquote><p><strong>集群</strong><br>当我们启动一个单独的Es节点时,就形成了一个集群，只不过在这个集群中只有一个节点（集群和分布式的区别在于集群是一个整体概念，即客户端对待集群适当做一个业务整体；分布式强点的则是“分”，整个业务被分成多个子业务，在不同的节点完成。）</p></blockquote><blockquote><p><strong>节点</strong><br>Es集群中的每一个节点就是一个Es实例，都可以单独完成Es的全部业务操作。它们具有相同的<code>cluster.name</code>，它们协同工作，分享数据和负载。</p></blockquote><blockquote><p><strong>分片</strong><br>分片是一个最小级别的“工作单元”，它保存了索引中所有数据的一部分，每个“分片”分为主分片和副本分片。同时每一个分片还是一个Lucene实例，其本身就是一个完整的搜索引擎。我们的文档被存贮在分片中，并且在分片中被索引，但是应用程序不会直接和分片进行交互，而是跟索引进行交互。这里的作引就可以被认为是一个或多个分片的“逻辑命名空间”。</p></blockquote><h4 id="集群"><a href="#集群" class="headerlink" title="集群"></a>集群</h4><p>启动一个Es集群，该集群中有10个节点分布在不同的服务器上，每个节点中默认含有5个分片，每个分片有1个副本。副本分片和主分片在一个节点上的意义不大，所以在集群中，Master节点会自动调整每个节点中的分片数量和类型。当每个主分片都启动成功，且副分片也启动成功，此时的集群健康状态为<code>blue</code>；当主分pain启动成功，但是副分片没有全部启动成功，集群的健康状态为<code>yello</code>；当主节点没有完全启动成功，集群的健康状态为<code>red</code>。</p><blockquote><p><strong>存储过程</strong><br>1、客户端向集群中的<code>client_node</code>发送新建、索引和删除请求。<br>2、节点根据文档_<code>id</code>计算出文档属于的分片，假设为分片2，分片2 在<code>node 3</code>，则客户端节点转发请求至<code>node 3</code>.<br>3、<code>node 3</code>在主分片上执行请求，如果执行成功，则转发该请求至分布分片。当所有的副本节点执行成功返回报告后，<code>node 3</code>报告<code>client_node</code>执行成功。</p></blockquote><p>在<code>client_node</code>上看到执行报告时，文档的修改已经生效。从上面的存储过程可以看出，Es存储的数据是分布在整个集群中的。</p><blockquote><p><strong>检索过程</strong><br>1、<code>client_node</code>向集群中的所有节点发送检索请求。<br>2、每个节点在自己的分片中遍历检索数据，将结果进行排序并返回给<code>client_node</code>。<br>3、<code>client_node</code>将返回的结果进行相关性排序，返回给用户。</p></blockquote>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>ElasticSearch</tag>
+      
+      <tag>Java</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>ElasticSearch-1</title>
+    <link href="/2019/09/01/ElasticSearch-1/"/>
+    <url>/2019/09/01/ElasticSearch-1/</url>
+    
+    <content type="html"><![CDATA[<h2 id="Es是什么？"><a href="#Es是什么？" class="headerlink" title="Es是什么？"></a>Es是什么？</h2><pre><code class="hljs plain">ElasticSearch是一款基于Lucene的全文搜索引擎。</code></pre><h3 id="什么是全文搜索引擎？"><a href="#什么是全文搜索引擎？" class="headerlink" title="什么是全文搜索引擎？"></a>什么是全文搜索引擎？</h3><blockquote><p>百度：全文搜索引擎就是通过从互联网上提取的各个网站的信息（以网页文字为主）而建立的数据库中，检索与用户查询条件匹配的相关记录，然后按一定的排列顺序将结果返回给用户。</p></blockquote><p>Es是对Lucene的封装，同时也是Lucene的分布式解决方案。将绝大多数的Lucene功能封装使其更容易被使用。Github、Stackoverflow等网站都在使用ElasticSearch作为搜索引擎。同时其优秀的分布式作业管理机制使其越来越被开发人员所喜爱。</p><h2 id="Es安装"><a href="#Es安装" class="headerlink" title="Es安装"></a>Es安装</h2><pre><code class="hljs mipsasm">值得注意的是Es是依赖于<span class="hljs-keyword">Java环境的，当运行在Java </span><span class="hljs-number">8</span> 环境时会建议使用<span class="hljs-keyword">Java </span><span class="hljs-number">11</span>，因为在后续的版本中将取消对<span class="hljs-keyword">Java </span><span class="hljs-number">8</span> 的支持。</code></pre><h3 id="一、安装方式"><a href="#一、安装方式" class="headerlink" title="一、安装方式"></a>一、安装方式</h3><blockquote><p>目前官网不再提供源码下载，但是还是建议使用源码的方式进行安装，因为后续修改配置文件会比较方便。</p></blockquote><pre><code class="hljs awk"><span class="hljs-regexp">//</span>linux环境<span class="hljs-regexp">//</span>获取源码包$ wget https:<span class="hljs-regexp">//</span>artifacts.elastic.co<span class="hljs-regexp">/downloads/</span>elasticsearch/elasticsearch-<span class="hljs-number">5.6</span>.<span class="hljs-number">9</span>.tar<span class="hljs-regexp">//</span>解压源码包$ tar -zxvf elasticsearch-<span class="hljs-number">5.6</span>.<span class="hljs-number">9</span>.tar<span class="hljs-regexp">//</span>进入源码主目录$ cd elasticsearch-<span class="hljs-number">5.6</span>.<span class="hljs-number">9</span>/</code></pre><p>至此，Es的安装就已经全部安装完毕了。</p><h3 id="二、配置"><a href="#二、配置" class="headerlink" title="二、配置"></a>二、配置</h3><p>打开./config/elasticsearch.yml文件</p><pre><code class="hljs stylus">vim ./config/elasticsearch.yml<span class="hljs-comment">//修改如下内容</span>cluster<span class="hljs-selector-class">.name</span>: 集群名称node<span class="hljs-selector-class">.name</span>: 节点名称path<span class="hljs-selector-class">.data</span>: 数据存储位置（目录位置，不需要创建文件）path<span class="hljs-selector-class">.logs</span>: 日志存储位置（同上）network<span class="hljs-selector-class">.host</span>: 绑定的ip（默认是<span class="hljs-number">127.0</span>.<span class="hljs-number">0.1</span>，本机访问，可以改为<span class="hljs-number">0.0</span>.<span class="hljs-number">0.0</span>使其能够在公网访问）discovery<span class="hljs-selector-class">.zen</span><span class="hljs-selector-class">.ping</span><span class="hljs-selector-class">.unicasts</span><span class="hljs-selector-class">.hosts</span>: 提供其他 Elasticsearch 服务节点的单点广播发现功能。配置集群中基于主机 TCP 端口的其他 Elasticsearch 服务的逗号分隔列表。例如：discovery<span class="hljs-selector-class">.zen</span><span class="hljs-selector-class">.ping</span><span class="hljs-selector-class">.unicast</span>.hosts=<span class="hljs-string">&quot;localhost:9300,localhost:9301,localhost:9302</span></code></pre><p>基本的配置如上所示。</p><h3 id="三、启动"><a href="#三、启动" class="headerlink" title="三、启动"></a>三、启动</h3><pre><code class="hljs awk"><span class="hljs-regexp">//</span>启动命令（Es主目录下）.<span class="hljs-regexp">/bin/</span>elasticsearch</code></pre><blockquote><p>如果是以root的身份去启动程序，会有报错。需要更换一个身份用户再次启动，同时将Es所在的文件夹权限设置为该用户可以访问和读写，否则会有报错出现。最简单的方法就是将Es文件夹及其子文件权限设置为777。重新执行指令之后会有日志信息打印出来，如果一切顺利，就可以访问<a href="http://ip地址:9200/">http://ip地址:9200</a> 来体验一下了。</p></blockquote><pre><code class="hljs json"><span class="hljs-comment">//访问服务器所返回的JSON数据</span>&#123;  <span class="hljs-attr">&quot;name&quot;</span> : <span class="hljs-string">&quot;节点名称&quot;</span>,  <span class="hljs-attr">&quot;cluster_name&quot;</span> : <span class="hljs-string">&quot;集群名称&quot;</span>,  <span class="hljs-attr">&quot;cluster_uuid&quot;</span> : <span class="hljs-string">&quot;集群ID&quot;</span>,  <span class="hljs-attr">&quot;version&quot;</span> : &#123;    <span class="hljs-attr">&quot;number&quot;</span> : <span class="hljs-string">&quot;Es版本号&quot;</span>,    <span class="hljs-attr">&quot;build_hash&quot;</span> : <span class="hljs-string">&quot;877a590&quot;</span>,    <span class="hljs-attr">&quot;build_date&quot;</span> : <span class="hljs-string">&quot;2018-04-12T16:25:14.838Z&quot;</span>,    <span class="hljs-attr">&quot;build_snapshot&quot;</span> : <span class="hljs-literal">false</span>,    <span class="hljs-attr">&quot;lucene_version&quot;</span> : <span class="hljs-string">&quot;6.6.1&quot;</span>  &#125;,  <span class="hljs-attr">&quot;tagline&quot;</span> : <span class="hljs-string">&quot;You Know, for Search&quot;</span>&#125;</code></pre><p>如果不顺利，根据报错信息。</p><blockquote><p>如果报错关于内存，请检查服务器的内存大小，如果小于2G，不建议在此服务器部署Es。即使程序运行正常，无端出现kill情况的也是由于内存过小导致的。</p></blockquote><blockquote><p>报错出现程序创建文件受到限制，需要修改该用户的最大创建文件数量（百度搜索即可）</p></blockquote>]]></content>
     
     
     

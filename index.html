@@ -195,21 +195,20 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/09/01/ElasticSearch-1/">ElasticSearch-1</a>
+        <a href="/2020/12/02/%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%89%98%E6%9C%BA%E5%88%B6/">双亲委托机制</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/09/01/ElasticSearch-1/">
+        <a href="/2020/12/02/%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%89%98%E6%9C%BA%E5%88%B6/">
           
           
             
           
-          Es是什么？ElasticSearch是一款基于Lucene的全文搜索引擎。
+          双亲委托机制
+​    双亲委托机制又叫父委托机制，描述为在当前类加载器加载某一个类时，会先调用父类加载器加载此类，如果付类加载器还有父类，就迭代委托，如果父类已经加载过此类，返回即可；如果没有，就尝试加载此类，加载失败，就交给子类加载器加载，依次向下。逻辑图如下图。
 
-什么是全文搜索引擎？
-百度：全文搜索引擎就是通过从互联网上提取的各个网站的信息（以网页文字为主）而建立的数据库中，检索与用户查询条件匹配的相关记录，然后按一定的排列顺序将结果返回给用户。
-
-Es是对Lucene的封装，同时也是Lucene的分布式解决方案。将绝大多数的Lucene功能封装使其更容易被使用。Github、
+双亲委托机制的用处
+双亲委托机制是JVM实现的一种类加载方式，这样做的好处其一是可以保证所有的类只被加载一次，不会出现同一类被记
         </a>
       </p>
 
@@ -217,8 +216,8 @@ Es是对Lucene的封装，同时也是Lucene的分布式解决方案。将绝大
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-09-01 17:14" pubdate>
-              2020-09-01
+            <time datetime="2020-12-02 08:45" pubdate>
+              2020-12-02
             </time>
           </div>
         
@@ -227,9 +226,146 @@ Es是对Lucene的封装，同时也是Lucene的分布式解决方案。将绝大
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/ElasticSearch/">ElasticSearch</a>
+              <a href="/tags/Java/">Java</a>
+            
+              <a href="/tags/JVM/">JVM</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/11/27/Map-getOrDefault%E6%96%B9%E6%B3%95/">Map.getOrDefault方法</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/11/27/Map-getOrDefault%E6%96%B9%E6%B3%95/">
+          
+          
+            
+          
+          源码如下：
+default V getOrDefault(Object key, V defaultValue) &#123;
+        V v;
+        //存在此key的值或者存在key，返沪key对应的value，否则返回你设置的defaultValue
+        return (((v = get(key)) != null) || containsKey(key))
+
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-11-27 09:19" pubdate>
+              2020-11-27
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
             
               <a href="/tags/Java/">Java</a>
+            
+              <a href="/tags/Map/">Map</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/11/25/inux%E4%B8%8B%E6%89%A7%E8%A1%8C-go-builld-%E6%97%A0%E6%B3%95%E5%BA%94/">Linux下执行 go builld 无反应</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/11/25/inux%E4%B8%8B%E6%89%A7%E8%A1%8C-go-builld-%E6%97%A0%E6%B3%95%E5%BA%94/">
+          
+          
+            
+          
+          main函数所在的的包必须是包名为main的包。如下图
+
+
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-11-25 10:02" pubdate>
+              2020-11-25
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Linux/">Linux</a>
+            
+              <a href="/tags/Go/">Go</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/11/24/net-Core%E5%AE%9E%E7%8E%B0AOPP/">.net Core实现AOP</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/11/24/net-Core%E5%AE%9E%E7%8E%B0AOPP/">
+          
+          
+            
+          
+          AOPAOP（面向切面编程）首先AOP不是和OOP一样，属于独立的编程模式，只是OOP的辅助开发模式。
+
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-11-24 17:20" pubdate>
+              2020-11-24
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/net-Core/">.net Core</a>
+            
+              <a href="/tags/AOP/">AOP</a>
             
           </div>
         
@@ -426,6 +562,54 @@ google当java中的方法用native来修饰的时候，就表示这个方法是�
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2019/09/01/ElasticSearch-1/">ElasticSearch-1</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2019/09/01/ElasticSearch-1/">
+          
+          
+            
+          
+          Es是什么？ElasticSearch是一款基于Lucene的全文搜索引擎。
+
+什么是全文搜索引擎？
+百度：全文搜索引擎就是通过从互联网上提取的各个网站的信息（以网页文字为主）而建立的数据库中，检索与用户查询条件匹配的相关记录，然后按一定的排列顺序将结果返回给用户。
+
+Es是对Lucene的封装，同时也是Lucene的分布式解决方案。将绝大多数的Lucene功能封装使其更容易被使用。Github、
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2019-09-01 17:14" pubdate>
+              2019-09-01
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/ElasticSearch/">ElasticSearch</a>
+            
+              <a href="/tags/Java/">Java</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2019/08/23/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式（一）</a>
       </h1>
 
@@ -467,52 +651,19 @@ public classs Factory&#123;  //创建工厂类
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2019/08/11/Centos7%E9%83%A8%E7%BD%B2MongoDB/">Centos7部署MongoDB</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2019/08/11/Centos7%E9%83%A8%E7%BD%B2MongoDB/">
-          
-          
-            
-          
-          安装MongoDB
-下载源码包mkdir mongo &amp;&amp; cd mongo新建一个文件夹用来存放源码文件下载：1、在Linux在终端执行weget &#39;mongoDB下载地址&#39;2、在本地下载完成后，使用FTP工具上传至Linux服务器3、关注文末微信公众号，回复“MongoDB”获取网盘链接^^tar zxvf 包文件.tar解压文件。
 
 
-配置文件进入mongod
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2019-08-11 17:20" pubdate>
-              2019-08-11
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/MongoDB/">MongoDB</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
+  
+  <script>
+    for (ele of document.getElementById("pagination").getElementsByTagName("a")) {
+      ele.href += '#board';
+    }
+  </script>
 
 
 

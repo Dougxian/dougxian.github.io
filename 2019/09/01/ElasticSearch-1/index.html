@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="Doug Xian">
   <meta name="keywords" content="">
-  <title>Centos7部署MongoDB - Dougxian</title>
+  <title>ElasticSearch-1 - Dougxian</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.5.3/css/bootstrap.min.css" />
 
@@ -174,9 +174,9 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="Centos7部署MongoDB">
+            <span class="h2" id="subtitle" title="ElasticSearch-1">
               
-                Centos7部署MongoDB
+                ElasticSearch-1
               
             </span>
 
@@ -191,8 +191,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2019-08-11 17:20" pubdate>
-        2019年8月11日 下午
+      <time datetime="2019-09-01 17:14" pubdate>
+        2019年9月1日 下午
       </time>
     </span>
   
@@ -203,7 +203,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      601 字
+      850 字
     </span>
   
 
@@ -213,7 +213,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      7
+      10
        分钟
     </span>
   
@@ -251,7 +251,7 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Centos7部署MongoDB</h1>
+            <h1 style="display: none">ElasticSearch-1</h1>
             
               <p class="note note-info">
                 
@@ -260,85 +260,74 @@
               </p>
             
             <div class="markdown-body">
-              <h4 id="安装MongoDB"><a href="#安装MongoDB" class="headerlink" title="安装MongoDB"></a>安装MongoDB</h4><blockquote>
-<p><strong>下载源码包</strong><br><code>mkdir mongo &amp;&amp; cd mongo</code>新建一个文件夹用来存放源码文件<br>下载：<br>1、在Linux在终端执行<code>weget &#39;mongoDB下载地址&#39;</code><br>2、在本地下载完成后，使用FTP工具上传至Linux服务器<br>3、关注文末微信公众号，回复“MongoDB”获取网盘链接^^<br><code>tar zxvf 包文件.tar</code>解压文件。</p>
+              <h2 id="Es是什么？"><a href="#Es是什么？" class="headerlink" title="Es是什么？"></a>Es是什么？</h2><pre><code class="hljs plain">ElasticSearch是一款基于Lucene的全文搜索引擎。</code></pre>
+
+<h3 id="什么是全文搜索引擎？"><a href="#什么是全文搜索引擎？" class="headerlink" title="什么是全文搜索引擎？"></a>什么是全文搜索引擎？</h3><blockquote>
+<p>百度：全文搜索引擎就是通过从互联网上提取的各个网站的信息（以网页文字为主）而建立的数据库中，检索与用户查询条件匹配的相关记录，然后按一定的排列顺序将结果返回给用户。</p>
+</blockquote>
+<p>Es是对Lucene的封装，同时也是Lucene的分布式解决方案。将绝大多数的Lucene功能封装使其更容易被使用。Github、Stackoverflow等网站都在使用ElasticSearch作为搜索引擎。同时其优秀的分布式作业管理机制使其越来越被开发人员所喜爱。</p>
+<h2 id="Es安装"><a href="#Es安装" class="headerlink" title="Es安装"></a>Es安装</h2><pre><code class="hljs mipsasm">值得注意的是Es是依赖于<span class="hljs-keyword">Java环境的，当运行在Java </span><span class="hljs-number">8</span> 环境时会建议使用<span class="hljs-keyword">Java </span><span class="hljs-number">11</span>，因为在后续的版本中将取消对<span class="hljs-keyword">Java </span><span class="hljs-number">8</span> 的支持。</code></pre>
+
+<h3 id="一、安装方式"><a href="#一、安装方式" class="headerlink" title="一、安装方式"></a>一、安装方式</h3><blockquote>
+<p>目前官网不再提供源码下载，但是还是建议使用源码的方式进行安装，因为后续修改配置文件会比较方便。</p>
+</blockquote>
+<pre><code class="hljs awk"><span class="hljs-regexp">//</span>linux环境
+
+<span class="hljs-regexp">//</span>获取源码包
+$ wget https:<span class="hljs-regexp">//</span>artifacts.elastic.co<span class="hljs-regexp">/downloads/</span>elasticsearch/elasticsearch-<span class="hljs-number">5.6</span>.<span class="hljs-number">9</span>.tar
+<span class="hljs-regexp">//</span>解压源码包
+$ tar -zxvf elasticsearch-<span class="hljs-number">5.6</span>.<span class="hljs-number">9</span>.tar
+<span class="hljs-regexp">//</span>进入源码主目录
+$ cd elasticsearch-<span class="hljs-number">5.6</span>.<span class="hljs-number">9</span>/</code></pre>
+
+<p>至此，Es的安装就已经全部安装完毕了。</p>
+<h3 id="二、配置"><a href="#二、配置" class="headerlink" title="二、配置"></a>二、配置</h3><p>打开./config/elasticsearch.yml文件</p>
+<pre><code class="hljs stylus">vim ./config/elasticsearch.yml
+
+<span class="hljs-comment">//修改如下内容</span>
+
+cluster<span class="hljs-selector-class">.name</span>: 集群名称
+
+node<span class="hljs-selector-class">.name</span>: 节点名称
+
+path<span class="hljs-selector-class">.data</span>: 数据存储位置（目录位置，不需要创建文件）
+
+path<span class="hljs-selector-class">.logs</span>: 日志存储位置（同上）
+
+network<span class="hljs-selector-class">.host</span>: 绑定的ip（默认是<span class="hljs-number">127.0</span>.<span class="hljs-number">0.1</span>，本机访问，可以改为<span class="hljs-number">0.0</span>.<span class="hljs-number">0.0</span>使其能够在公网访问）
+
+discovery<span class="hljs-selector-class">.zen</span><span class="hljs-selector-class">.ping</span><span class="hljs-selector-class">.unicasts</span><span class="hljs-selector-class">.hosts</span>: 提供其他 Elasticsearch 服务节点的单点广播发现功能。配置集群中基于主机 TCP 端口的其他 Elasticsearch 服务的逗号分隔列表。
+例如：discovery<span class="hljs-selector-class">.zen</span><span class="hljs-selector-class">.ping</span><span class="hljs-selector-class">.unicast</span>.hosts=<span class="hljs-string">&quot;localhost:9300,localhost:9301,localhost:9302</span></code></pre>
+
+<p>基本的配置如上所示。</p>
+<h3 id="三、启动"><a href="#三、启动" class="headerlink" title="三、启动"></a>三、启动</h3><pre><code class="hljs awk"><span class="hljs-regexp">//</span>启动命令（Es主目录下）
+.<span class="hljs-regexp">/bin/</span>elasticsearch</code></pre>
+
+<blockquote>
+<p>如果是以root的身份去启动程序，会有报错。需要更换一个身份用户再次启动，同时将Es所在的文件夹权限设置为该用户可以访问和读写，否则会有报错出现。最简单的方法就是将Es文件夹及其子文件权限设置为777。重新执行指令之后会有日志信息打印出来，如果一切顺利，就可以访问<a target="_blank" rel="noopener" href="http://ip地址:9200/">http://ip地址:9200</a> 来体验一下了。</p>
+</blockquote>
+<pre><code class="hljs json"><span class="hljs-comment">//访问服务器所返回的JSON数据</span>
+&#123;
+  <span class="hljs-attr">&quot;name&quot;</span> : <span class="hljs-string">&quot;节点名称&quot;</span>,
+  <span class="hljs-attr">&quot;cluster_name&quot;</span> : <span class="hljs-string">&quot;集群名称&quot;</span>,
+  <span class="hljs-attr">&quot;cluster_uuid&quot;</span> : <span class="hljs-string">&quot;集群ID&quot;</span>,
+  <span class="hljs-attr">&quot;version&quot;</span> : &#123;
+    <span class="hljs-attr">&quot;number&quot;</span> : <span class="hljs-string">&quot;Es版本号&quot;</span>,
+    <span class="hljs-attr">&quot;build_hash&quot;</span> : <span class="hljs-string">&quot;877a590&quot;</span>,
+    <span class="hljs-attr">&quot;build_date&quot;</span> : <span class="hljs-string">&quot;2018-04-12T16:25:14.838Z&quot;</span>,
+    <span class="hljs-attr">&quot;build_snapshot&quot;</span> : <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">&quot;lucene_version&quot;</span> : <span class="hljs-string">&quot;6.6.1&quot;</span>
+  &#125;,
+  <span class="hljs-attr">&quot;tagline&quot;</span> : <span class="hljs-string">&quot;You Know, for Search&quot;</span>
+&#125;</code></pre>
+
+<p>如果不顺利，根据报错信息。</p>
+<blockquote>
+<p>如果报错关于内存，请检查服务器的内存大小，如果小于2G，不建议在此服务器部署Es。即使程序运行正常，无端出现kill情况的也是由于内存过小导致的。</p>
 </blockquote>
 <blockquote>
-<p><strong>配置文件</strong><br>进入mongodb解压文件夹，编辑mongo.conf文件（如果没有自己创建也可以）</p>
+<p>报错出现程序创建文件受到限制，需要修改该用户的最大创建文件数量（百度搜索即可）</p>
 </blockquote>
-<pre><code class="hljs vala"><span class="hljs-comment">//编辑文件</span>
-vim mongo.conf
-<span class="hljs-comment">//写入如下文本</span>
-
-<span class="hljs-meta">#port 端口号</span>
-port=<span class="hljs-number">27017</span>
-
-<span class="hljs-meta">#dbpath 数据库存储文件目录</span>
-dbpath=/home/mongo/data
-
-<span class="hljs-meta">#logpath 日志路径</span>
-logpath=/home/mongo/logs/mongodb.log
-
-<span class="hljs-meta">#logappend 日志追加形式  false:重新启动覆盖文件</span>
-logappend=<span class="hljs-literal">true</span>
-
-<span class="hljs-meta">#fork 后台启动</span>
-fork=<span class="hljs-literal">true</span>
-
-<span class="hljs-meta">#开启副本集</span>
-replSet=[副本集名称]
-
-<span class="hljs-meta">#绑定ip</span>
-bind_ip=<span class="hljs-number">0.0</span><span class="hljs-number">.0</span><span class="hljs-number">.0</span></code></pre>
-
-<blockquote>
-<p><strong>启动</strong></p>
-</blockquote>
-<pre><code class="hljs awk">cd ./bin
-
-<span class="hljs-regexp">//</span>启动
-./mongo --config [配置文件地址]
-
-<span class="hljs-regexp">//</span>进入客户端
-./mongo --port <span class="hljs-number">27017</span>
-
-<span class="hljs-regexp">//</span>显示如下内容 PRIMARY&gt;表示当前结点为主节点，在此节点的写操作和修改操作将会同步到副本节点
-MongoDB shell version v4.<span class="hljs-number">0.13</span>
-connecting to: mongodb:<span class="hljs-regexp">//</span><span class="hljs-number">127.0</span>.<span class="hljs-number">0.1</span>:<span class="hljs-number">27017</span>/?gssapiServiceName=mongodb
-Implicit session: session &#123; <span class="hljs-string">&quot;id&quot;</span> : UUID(<span class="hljs-string">&quot;89d46323-09ab-47c1-a37a-95f20cd030bd&quot;</span>) &#125;
-MongoDB server version: <span class="hljs-number">4.0</span>.<span class="hljs-number">13</span>
-[副本集名称]:PRIMARY&gt;
-
-<span class="hljs-regexp">//</span>创建初始化配置文件，如果是单机安装，可以省略。
-[副本集名称]:PRIMARY&gt;
-config = &#123;
-<span class="hljs-string">&quot;_id&quot;</span>:<span class="hljs-string">&quot;副本集名称&quot;</span>,
-<span class="hljs-string">&quot;members&quot;</span>:[
-  &#123;<span class="hljs-string">&quot;_id&quot;</span>:<span class="hljs-number">0</span>,<span class="hljs-string">&quot;host&quot;</span>:<span class="hljs-string">&quot;192.168.198.224:27017&quot;</span>&#125;,<span class="hljs-comment">#可以是单机的不同端口之间按进行集群</span>
-  &#123;<span class="hljs-string">&quot;_id&quot;</span>:<span class="hljs-number">1</span>,<span class="hljs-string">&quot;host&quot;</span>:<span class="hljs-string">&quot;192.168.198.225:27017&quot;</span>&#125;,
-  &#123;<span class="hljs-string">&quot;_id&quot;</span>:<span class="hljs-number">2</span>,<span class="hljs-string">&quot;host&quot;</span>:<span class="hljs-string">&quot;192.168.198.226:27017&quot;</span>,arbiterOnly:true&#125;
-]
-&#125;
-
-<span class="hljs-regexp">//</span>执行初始化过程，没有配置文件可以省略参数config
-[副本集名称]:PRIMARY&gt;rs.initiate(config);
-
-<span class="hljs-regexp">//</span>查看集群状态
-[副本集名称]:PRIMARY&gt;rs.status();
-
-<span class="hljs-regexp">//</span>创建数据库
-use test
-
-<span class="hljs-regexp">//</span>插入数据,testdb为集合名称，可自动创建
-db.testdb.insert(&#123;<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;胡图图&quot;</span>&#125;);
-
-<span class="hljs-regexp">//</span>打开其他节点的客户端，此时其他节点的数据已经同步更新，因为mongodb默认是从主节点读写数据的，副本节点上不允许读，需要设置副本节点可以读。
-db.getMongo().setSlaveOk();<span class="hljs-comment">#</span>
-
-<span class="hljs-regexp">//</span>正常读取
-db.testdb.find();</code></pre>
-
-<p>打开mongoDB副本集是为了以后的mongoDB 与 ElasticSearch 进行数据同步做准备。</p>
 
             </div>
             <hr>
@@ -349,7 +338,9 @@ db.testdb.find();</code></pre>
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/MongoDB/">MongoDB</a>
+                      <a class="hover-with-bg" href="/tags/ElasticSearch/">ElasticSearch</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Java/">Java</a>
                     
                   </div>
                 
@@ -362,15 +353,21 @@ db.testdb.find();</code></pre>
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2019/08/23/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+                      <a href="/2019/09/19/ElasticSearch-2/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">设计模式（一）</span>
+                        <span class="hidden-mobile">ElasticSearch-2</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/2019/08/23/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+                        <span class="hidden-mobile">设计模式（一）</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>
