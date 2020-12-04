@@ -1,21 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="45338e34-e68e-4776-8530-9a25595f4c06" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/source/_posts/Centos7部署MongoDB.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/_posts/Centos7部署MongoDB.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/_posts/ElasticSearch-1.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/_posts/ElasticSearch-1.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/_posts/ElasticSearch-2.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/_posts/ElasticSearch-2.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/_posts/MongoDB之oplog.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/_posts/MongoDB之oplog.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/_posts/设计模式.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/_posts/设计模式.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/about/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/about/index.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/themes/fluid/source/img/default.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/themes/fluid/source/img/default.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/themes/fluid/source/img/favicon.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/themes/fluid/source/img/favicon.jpg" afterDir="false" />
-    </list>
+    <list default="true" id="45338e34-e68e-4776-8530-9a25595f4c06" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="GOROOT" path="D:\Go" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -27,8 +19,11 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="go.import.settings.migrated" value="true" />
+    <property name="go.sdk.automatically.set" value="true" />
     <property name="last_opened_file_path" value="$USER_HOME$" />
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="45338e34-e68e-4776-8530-9a25595f4c06" name="Default Changelist" comment="" />
@@ -38,5 +33,8 @@
       <updated>1605873758975</updated>
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
 </project>
